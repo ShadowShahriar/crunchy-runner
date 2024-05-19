@@ -1,0 +1,43 @@
+{
+	"name": "crunchy-runner",
+	"version": "1.0.0",
+	"description": "A simple web-based C/C++ compiler and code runner.",
+	"main": "app.js",
+	"type": "module",
+	"scripts": {
+		"test": "node app.js",
+		"start": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ShadowShahriar/crunchy-runner.git"
+	},
+	"keywords": [
+		"nodejs",
+		"c",
+		"cpp",
+		"codemirror",
+		"expressjs",
+		"xtermjs",
+		"node-pty"
+	],
+	"author": "S. Shahriar <shadowshahriar.dev@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ShadowShahriar/crunchy-runner/issues"
+	},
+	"homepage": "https://github.com/ShadowShahriar/crunchy-runner#readme",
+	"dependencies": {
+		"@fontsource-variable/jetbrains-mono": "^5.0.21",
+		"@fontsource-variable/outfit": "^5.0.13",
+		"@xterm/addon-fit": "^0.10.0",
+		"@xterm/xterm": "^5.5.0",
+		"body-parser": "^1.20.2",
+		"codemirror": "^5.65.16",
+		"express": "^4.19.2",
+		"nanoid": "^5.0.7",
+		"node-pty": "^1.0.0",
+		"open": "^9.1.0",
+		"ws": "^8.17.0"
+	}
+}

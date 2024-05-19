@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="A simple web-based C/C++ compiler and code runner" />
+		<meta name="theme-color" content="#000" />
+		<title>Crunchy Runner | A web based C/C++ Compiler</title>
+		<link rel="stylesheet" href="reset.css" />
+
+		<!-- === Icon === -->
+		<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+
+		<!-- === Fonts === -->
+		<link href="jetbrains-mono/index.css" rel="stylesheet" />
+		<link href="jetbrains-mono/wght.css" rel="stylesheet" />
+		<link href="outfit/index.css" rel="stylesheet" />
+		<link href="outfit/wght.css" rel="stylesheet" />
+
+		<!-- === CodeMirror === -->
+		<script src="lib/codemirror.js"></script>
+		<script src="addon/comment/comment.js"></script>
+		<script src="addon/selection/active-line.js"></script>
+		<script src="addon/edit/matchbrackets.js"></script>
+		<script src="addon/edit/closebrackets.js"></script>
+		<script src="keymap/sublime.js"></script>
+		<script src="mode/clike/clike.js"></script>
+
+		<link rel="stylesheet" href="lib/codemirror.css" />
+		<link rel="stylesheet" href="" id="themecss" />
+
+		<!-- === Xterm === -->
+		<link rel="stylesheet" href="xterm/css/xterm.css" />
+		<script src="xterm/lib/xterm.js"></script>
+		<script src="addon-fit/lib/addon-fit.js"></script>
+
+		<link rel="stylesheet" href="index.css" />
+		<script src="index.js" defer></script>
+	</head>
+	<body>
+		<main>
+			<header id="header-wrapper"><img src="icon.svg" id="header-icon" />Crunchy Runner</header>
+			<div class="two-columns">
+				<div id="editor-wrapper" class="wrapper">
+					<div id="titlebar">
+						<div id="tab">Untitled</div>
+						<img src="window.svg" id="titlebar-controls" />
+					</div>
+					<div id="editor-contents">
+						<form method="post" name="upload" id="upload">
+							<textarea id="editor" name="editor"></textarea>
+						</form>
+					</div>
+				</div>
+				<div id="terminal-wrapper" class="wrapper">
+					<div id="terminal"></div>
+				</div>
+			</div>
+			<div id="options-wrapper">
+				<input type="submit" value="Run" form="upload" id="runbtn" />
+				<label for="language">Language</label>
+				<select name="language" id="language" form="upload">
+					<option value="c">C</option>
+					<option value="cpp" selected>C++</option>
+				</select>
+				<label for="theme">Theme</label>
+				<select name="theme" id="theme">
+					<optgroup label="Dark Themes">
+						<option value="ayu-dark">Ayu Dark</option>
+						<option value="ayu-mirage">Ayu Mirage</option>
+						<option value="base16-dark">Base16 Dark</option>
+						<option value="blackboard">Blackboard</option>
+						<option value="dracula">Dracula</option>
+						<option value="duotone-dark">Duotone Dark</option>
+						<option value="material-darker">Material Darker</option>
+						<option value="material-palenight">Material Palenight</option>
+						<option value="material-ocean" selected>Material Ocean</option>
+						<option value="moxer">Moxer</option>
+						<option value="nord">Nord</option>
+					</optgroup>
+				</select>
+				<textarea id="output" name="output" spellcheck="false">your crazy</textarea>
+			</div>
+		</main>
+		<footer>
+			Made with madness by <a href="https://github.com/ShadowShahriar" target="_blank"><b>S. Shahriar</b></a>
+		</footer>
+	</body>
+</html>
