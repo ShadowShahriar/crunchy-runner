@@ -1,3 +1,4 @@
+/* TODO: Add comments */
 :root {
 	--font-family: 'JetBrains Mono Variable', monospace;
 	--font-family2: 'Outfit Variable', sans-serif;
@@ -309,4 +310,41 @@ select {
 
 a {
 	text-shadow: 0 0 1em #fff6;
+}
+
+@media (hover: hover) {
+	html ::-webkit-scrollbar {
+		width: 18px;
+	}
+
+	html ::-webkit-scrollbar-thumb {
+		border-radius: 20px;
+		border: 6px solid #0000;
+		height: 80px;
+		background-clip: content-box;
+	}
+
+	html ::-webkit-scrollbar-track {
+		background-color: #0000;
+	}
+
+	html ::-webkit-scrollbar-thumb {
+		background-color: #fff2;
+	}
+
+	html ::-webkit-scrollbar-thumb:hover {
+		background-color: #fff5;
+	}
+
+	html ::-webkit-scrollbar-thumb:active {
+		background-color: #fff8;
+	}
+
+	html ::-webkit-scrollbar-thumb:window-inactive {
+		background-color: #0009;
+	}
+
+	html ::-webkit-scrollbar-thumb:hover:window-inactive {
+		background-color: #000b;
+	}
 }
