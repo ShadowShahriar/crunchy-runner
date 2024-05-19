@@ -1,6 +1,7 @@
 const editor = document.querySelector('#editor')
 const output = document.querySelector('#output')
 let cm = null
+let firstrun = true
 
 // === create a new Web Socket ===
 const socket = new WebSocket('ws://localhost:6060')
@@ -36,6 +37,7 @@ function setupSubmitButton() {
 	const title = document.querySelector('#tab')
 	form.addEventListener('submit', async event => {
 		event.preventDefault()
+		firstrun = false
 		socket.send('\r\n\r')
 		xterm.clear()
 		termproxy.setAttribute('data-state', 'none')
@@ -132,6 +134,7 @@ function initXterm() {
 	xterm.onKey(keyObj => socket.send(keyObj.key))
 }
 
+// === setup editor and terminal themes ===
 function setupTheme() {
 	const old = document.querySelector('#themecss')
 	document.head.removeChild(old)
@@ -154,8 +157,19 @@ function setupTheme() {
 
 document.querySelector('#theme').addEventListener('change', _ => setupTheme())
 
+// === setup code prefill ===
+function setupPrefill() {
+	const current = document.querySelector('#language').value
+	const title = document.querySelector('#tab')
+	title.innerText = `Untitled.${current}`
+	if (firstrun) cm.setValue(prefill[current])
+}
+
+document.querySelector('#language').addEventListener('change', _ => setupPrefill())
+
 setupXterm()
 setupCodeMirror()
 setupTheme()
 setupSubmitButton()
+setupPrefill()
 initXterm()
