@@ -30,5 +30,23 @@ int main()
 	cin >> n;
 	cout << "The number is: " << n;
 	return 0;
-}`
+}`,
+
+	cs: `public class Program
+{
+    public static void Main(string[] args)
+    {
+        System.Console.WriteLine("Hey there!");
+    }
+}`,
+
+	java: `class HeyThere {
+	public static void main(String[] args) {
+		System.out.println("Hey there!"); 
+	}
+}`,
+
+	py: `print('Hey there!')`,
+
+	js: `console.log('Hey there!');`
 }

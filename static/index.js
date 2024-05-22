@@ -157,19 +157,44 @@ function setupTheme() {
 
 document.querySelector('#theme').addEventListener('change', _ => setupTheme())
 
-// === setup code prefill ===
-function setupPrefill() {
+// === setup language mode & code prefill ===
+function setupMode() {
 	const current = document.querySelector('#language').value
 	const title = document.querySelector('#tab')
 	title.innerText = `Untitled.${current}`
 	if (firstrun) cm.setValue(prefill[current])
+
+	let mode = null
+	switch (current) {
+		case 'c':
+			mode = 'text/x-csrc'
+			break
+		case 'cpp':
+			mode = 'text/x-c++src'
+			break
+		case 'cs':
+			mode = 'text/x-csharp'
+			break
+		case 'js':
+			mode = 'text/javascript'
+			break
+		case 'java':
+			mode = 'text/x-java'
+			break
+		case 'py':
+			mode = 'text/x-python'
+			break
+		default:
+			break
+	}
+	cm.setOption('mode', mode)
 }
 
-document.querySelector('#language').addEventListener('change', _ => setupPrefill())
+document.querySelector('#language').addEventListener('change', _ => setupMode())
 
 setupXterm()
 setupCodeMirror()
 setupTheme()
 setupSubmitButton()
-setupPrefill()
+setupMode()
 initXterm()

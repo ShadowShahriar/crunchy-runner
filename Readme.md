@@ -2,7 +2,9 @@
 
 ## Overview
 
-> **Crunchy Runner** is a C/C++ compiler and code runner created with web technologies. It uses [`node-pty`][1] to create a terminal instance that users can interact with in the front end using [`xterm.js`][2]
+> **Crunchy Runner** is a local compiler and code runner created with web technologies. It uses [`node-pty`][1] to create a terminal instance that users can interact with in the front end using [`xterm.js`][2]
+
+**Update:** Added support for **C#**, **Java**, **Python**, and **JavaScript**.
 
 [📌 **Video Demo**][8]
 
@@ -44,8 +46,21 @@ npm start
 
 -   Minimal Design
 -   **10+** Dark Themes
+-   Support for multiple languages (C, C++, C#, Java, Python, JavaScript)
 -   Code Editor powered by [**CodeMirror**][9]
 -   Real-time terminal emulation (I/O) using [`node-pty`][1] and [`xterm.js`][2]
+
+## Compilers
+
+IDEs like [**Code::Blocks**][21] come with bundled compilers for C-like languages. However, **Crunchy Runner** uses local compilers that are already installed on your system. So, you must install the compilers **manually** if your system doesn't have them.
+
+| Language   | Software                                         | Instructions                  |
+| ---------- | ------------------------------------------------ | ----------------------------- |
+| C, C++     | GNU&nbsp;Compiler&nbsp;Collection&nbsp;(**GCC**) | [**MSYS2**][16]               |
+| C#         | C#&nbsp;Compiler&nbsp;(**CSC**)                  | [**Stack&nbsp;Overflow**][17] |
+| Java       | Java&nbsp;Development&nbsp;Kit (**JDK**)         | [**Official&nbsp;Site**][18]  |
+| Python     | Python                                           | [**Official&nbsp;Site**][19]  |
+| JavaScript | Node.js                                          | [**Official&nbsp;Site**][20]  |
 
 ## License
 
@@ -68,3 +83,9 @@ The source code is licensed under [**MIT**][10].
 [13]: https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/
 [14]: https://aka.ms/vs/14/release/vcpp_spectre_libs_x64
 [15]: https://www.python.org/downloads/release/python-2715/
+[16]: https://www.msys2.org/
+[17]: https://stackoverflow.com/a/47624225
+[18]: https://www.oracle.com/java/technologies/downloads/
+[19]: https://www.python.org/downloads/
+[20]: https://nodejs.org/en/download/package-manager
+[21]: https://www.codeblocks.org/

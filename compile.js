@@ -6,7 +6,7 @@ import os from 'os'
 
 const tempdir = os.tmpdir()
 const executable = os.platform() === 'win32' ? 'exe' : 'out'
-const compiler = { c: 'gcc', cpp: 'g++' }
+const compiler = { c: 'gcc', cpp: 'g++', cs: 'csc', java: 'java', py: 'python', js: 'node' }
 const idlength = 16
 
 async function saveSourceFile(code, lang) {
@@ -19,19 +19,36 @@ async function saveSourceFile(code, lang) {
 	return [sourcefilepath, exefilepath, lang, sourcefilename]
 }
 
-async function compileSourceFile(sourcepath, destpath, compiler) {
+async function compileSourceFile(sourcepath, destpath, compiler, lang) {
 	return new Promise((resolve, reject) => {
-		const childps = spawn(compiler, [sourcepath, '-o', destpath])
+		let args = []
+
+		// compilation command is different in C# compiler
+		if (lang === 'cs') args = [sourcepath, `-out:${destpath}`]
+		else args = [sourcepath, '-o', destpath]
+
+		const childps = spawn(compiler, args)
 		childps.on('close', _ => resolve(true))
-		childps.on('error', _ => reject(null))
+		childps.on('error', _ => {
+			console.log(_)
+			reject(null)
+		})
 	})
 }
 
 export async function compile(source, lang) {
 	const step1 = await saveSourceFile(source, lang)
-	const step2 = await compileSourceFile(step1[0], step1[1], compiler[lang])
-	if (!step2) return null
-	const exePath = step1[1]
+	let step2, exePath
+
+	// these source files can be run directly without compilation
+	if (lang === 'java' || lang === 'py' || lang === 'js') {
+		exePath = `${compiler[lang]} "${step1[0]}"`
+	} else {
+		// C, C++, and C# source files require compilation
+		step2 = await compileSourceFile(step1[0], step1[1], compiler[lang], lang)
+		if (!step2) return null
+		exePath = step1[1]
+	}
 	const sourceName = step1[3]
 	return [exePath, sourceName]
 }

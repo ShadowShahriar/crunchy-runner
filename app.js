@@ -76,8 +76,30 @@ app.post('/run', async (req, res) => {
 	const sourceLang = req.body.language
 	const paths = await compile(sourceCode, sourceLang)
 	if (wsid) {
-		if (existsSync(paths[0])) {
-			xterm.write(`\x03\r${clscr}\r${paths[0]}\r`)
+		const clike = sourceLang === 'c' || sourceLang === 'cpp' || sourceLang === 'cs'
+
+		// === show compiler/interpreter version when necessary ===
+		if (!clike || (clike && existsSync(paths[0]))) {
+			let versioncmd = null
+			switch (sourceLang) {
+				case 'cs':
+					versioncmd = 'csc -version'
+					break
+				case 'java':
+					versioncmd = 'java -version'
+					break
+				case 'py':
+					versioncmd = 'python --version'
+					break
+				case 'js':
+					versioncmd = 'node -v'
+					break
+				default:
+					break
+			}
+
+			if (versioncmd) xterm.write(`\x03\r${clscr}\r${versioncmd}\r${paths[0]}\r`)
+			else xterm.write(`\x03\r${clscr}\r${paths[0]}\r`)
 			debug(shell, `Executing: ${paths[0]}`)
 			res.send(paths[1])
 		} else {
