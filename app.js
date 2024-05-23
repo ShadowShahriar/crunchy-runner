@@ -94,13 +94,17 @@ app.post('/run', async (req, res) => {
 				case 'js':
 					versioncmd = 'node -v'
 					break
+				case 'go':
+					versioncmd = 'go version'
+					break
 				default:
 					break
 			}
 
-			if (versioncmd) xterm.write(`\x03\r${clscr}\r${versioncmd}\r${paths[0]}\r`)
-			else xterm.write(`\x03\r${clscr}\r${paths[0]}\r`)
-			debug(shell, `Executing: ${paths[0]}`)
+			const executionCommand = paths[0]
+			if (versioncmd) xterm.write(`\x03\r${clscr}\r${versioncmd}\r${executionCommand}\r`)
+			else xterm.write(`\x03\r${clscr}\r${executionCommand}\r`)
+			debug(shell, `Executing: ${executionCommand}`)
 			res.send(paths[1])
 		} else {
 			xterm.write(`\x03\r${clscr}\r`)

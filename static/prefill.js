@@ -48,5 +48,12 @@ int main()
 
 	py: `print('Hey there!')`,
 
-	js: `console.log('Hey there!');`
+	js: `console.log('Hey there!');`,
+
+	go: `package main
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, World!")
+}`
 }

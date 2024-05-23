@@ -184,6 +184,9 @@ function setupMode() {
 		case 'py':
 			mode = 'text/x-python'
 			break
+		case 'go':
+			mode = 'text/x-go'
+			break
 		default:
 			break
 	}

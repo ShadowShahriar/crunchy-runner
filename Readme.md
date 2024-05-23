@@ -4,7 +4,7 @@
 
 > **Crunchy Runner** is a local compiler and code runner created with web technologies. It uses [`node-pty`][1] to create a terminal instance that users can interact with in the front end using [`xterm.js`][2]
 
-**Update:** Added support for **C#**, **Java**, **Python**, and **JavaScript**.
+**Update:** Added support for **C#**, **Java**, **Python**, **JavaScript**, and **Go**.
 
 [📌 **Video Demo**][8]
 
@@ -46,7 +46,7 @@ npm start
 
 -   Minimal Design
 -   **10+** Dark Themes
--   Support for multiple languages (C, C++, C#, Java, Python, JavaScript)
+-   Support for multiple languages (C, C++, C#, Java, Python, JavaScript, and Go)
 -   Code Editor powered by [**CodeMirror**][9]
 -   Real-time terminal emulation (I/O) using [`node-pty`][1] and [`xterm.js`][2]
 
@@ -61,6 +61,7 @@ IDEs like [**Code::Blocks**][21] come with bundled compilers for C-like language
 | Java       | Java&nbsp;Development&nbsp;Kit (**JDK**)         | [**Official&nbsp;Site**][18]  |
 | Python     | Python                                           | [**Official&nbsp;Site**][19]  |
 | JavaScript | Node.js                                          | [**Official&nbsp;Site**][20]  |
+| Go         | Go                                               | [**Official&nbsp;Site**][22]  |
 
 ## License
 
@@ -89,3 +90,4 @@ The source code is licensed under [**MIT**][10].
 [19]: https://www.python.org/downloads/
 [20]: https://nodejs.org/en/download/package-manager
 [21]: https://www.codeblocks.org/
+[22]: https://go.dev/dl/

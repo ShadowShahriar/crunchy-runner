@@ -6,7 +6,7 @@ import os from 'os'
 
 const tempdir = os.tmpdir()
 const executable = os.platform() === 'win32' ? 'exe' : 'out'
-const compiler = { c: 'gcc', cpp: 'g++', cs: 'csc', java: 'java', py: 'python', js: 'node' }
+const compiler = { c: 'gcc', cpp: 'g++', cs: 'csc', java: 'java', py: 'python', js: 'node', go: 'go' }
 const idlength = 16
 
 async function saveSourceFile(code, lang) {
@@ -43,6 +43,8 @@ export async function compile(source, lang) {
 	// these source files can be run directly without compilation
 	if (lang === 'java' || lang === 'py' || lang === 'js') {
 		exePath = `${compiler[lang]} "${step1[0]}"`
+	} else if (lang === 'go') {
+		exePath = `${compiler[lang]} run "${step1[0]}"`
 	} else {
 		// C, C++, and C# source files require compilation
 		step2 = await compileSourceFile(step1[0], step1[1], compiler[lang], lang)
